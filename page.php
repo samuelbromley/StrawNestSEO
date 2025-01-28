@@ -43,6 +43,10 @@ function entry_preview($filename) {
             $page_body .= "<img style='width: 100%' src='images/" . substr($page_line, 7) . "'>";
         } elseif (match_config_line($page_line, "=imageSmall:")) {
             $page_body .= "<img style='width: 30%' src='images/" . substr($page_line, 12) . "'>";
+        } elseif (substr(trim($page_line), 0, 2) === '##') {
+            $page_body .= "<h2>" . substr(trim($page_line), 2) . "</h2>";
+        } elseif (substr(trim($page_line), 0, 2) === '//') {
+            $page_body .= "<h3>" . substr(trim($page_line), 2) . "</h3>";    
         } elseif ($page_line === '' || empty($page_line) || trim($page_line) === '') {
             $page_body = trim($page_body);
             $page_body .= "</p>\r<p>";
@@ -103,7 +107,7 @@ $first_line = get_first_line(entry_path());
 <div class="container">
     <div class="content">
         <header class="tacenter">
-            <a href="/"><img src="/inc/cake3.svg" alt="logo"></a>
+            <a href="/"><img src="/inc/cake3.svg" alt="x"></a>
             <p class="blog_header"><a href='/blog'><?php echo trim($heading1); ?></a></p>
         </header>
         <div class="row">
@@ -113,7 +117,7 @@ $first_line = get_first_line(entry_path());
         </div>
         <footer>
             <hr/>
-            <p><?php echo $footer . date("Y") . " StrawNestCMS"; ?></p>
+            <p><?php echo $footer . date("Y") . "x"; ?></p>
         </footer>
     </div>
 </div>
